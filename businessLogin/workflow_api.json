@@ -1,0 +1,835 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "aamKizukihassakuSfwNsfw_v10.safetensors",
+      "beta_schedule": "sqrt_linear (AnimateDiff)",
+      "use_custom_scale_factor": false,
+      "scale_factor": 0.18000000000000002
+    },
+    "class_type": "CheckpointLoaderSimpleWithNoiseSelect",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "2": {
+    "inputs": {
+      "vae_name": "cleanvae_v10.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Optional VAE"
+    }
+  },
+  "10": {
+    "inputs": {
+      "samples": [
+        "407",
+        0
+      ],
+      "vae": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "70": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_lineart.pth"
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet 1 Model 🛂🅐🅒🅝"
+    }
+  },
+  "72": {
+    "inputs": {
+      "strength": [
+        "439",
+        0
+      ],
+      "start_percent": [
+        "440",
+        0
+      ],
+      "end_percent": [
+        "441",
+        0
+      ],
+      "positive": [
+        "344",
+        0
+      ],
+      "negative": [
+        "230",
+        0
+      ],
+      "control_net": [
+        "70",
+        0
+      ],
+      "image": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet 1 (Advanced)"
+    }
+  },
+  "92": {
+    "inputs": {
+      "images": [
+        "367",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "93": {
+    "inputs": {
+      "model_name": "temporaldiff-v1-animatediff.ckpt",
+      "beta_schedule": "sqrt_linear (AnimateDiff)",
+      "motion_scale": 1,
+      "apply_v2_models_properly": false,
+      "model": [
+        "347",
+        0
+      ],
+      "context_options": [
+        "94",
+        0
+      ],
+      "motion_model_settings": [
+        "415",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffLoaderWithContext",
+    "_meta": {
+      "title": "AnimateDiff Loader [Legacy] 🎭🅐🅓①"
+    }
+  },
+  "94": {
+    "inputs": {
+      "context_length": 16,
+      "context_stride": 1,
+      "context_overlap": 4,
+      "context_schedule": "uniform",
+      "closed_loop": true,
+      "fuse_method": "flat",
+      "use_on_equal_length": false,
+      "start_percent": 0,
+      "guarantee_steps": 1
+    },
+    "class_type": "ADE_AnimateDiffUniformContextOptions",
+    "_meta": {
+      "title": "Context Options◆Looped Uniform 🎭🅐🅓"
+    }
+  },
+  "97": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_softedge.pth"
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet 2 Model 🛂🅐🅒🅝"
+    }
+  },
+  "99": {
+    "inputs": {
+      "strength": [
+        "443",
+        0
+      ],
+      "start_percent": [
+        "444",
+        0
+      ],
+      "end_percent": [
+        "445",
+        0
+      ],
+      "positive": [
+        "72",
+        0
+      ],
+      "negative": [
+        "72",
+        1
+      ],
+      "control_net": [
+        "97",
+        0
+      ],
+      "image": [
+        "174",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet 2 (Advanced)"
+    }
+  },
+  "103": {
+    "inputs": {
+      "images": [
+        "366",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "151": {
+    "inputs": {
+      "width": 912,
+      "height": 512,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Images"
+    }
+  },
+  "172": {
+    "inputs": {
+      "directory": "/home/yori/Downloads/output\\4) LineArt",
+      "image_load_cap": 1,
+      "start_index": 57
+    },
+    "class_type": "LoadImagesFromDirectory",
+    "_meta": {
+      "title": "ControlNet 1"
+    }
+  },
+  "174": {
+    "inputs": {
+      "directory": "/home/yori/Downloads/output\\2) Softedge",
+      "image_load_cap": 1,
+      "start_index": 57
+    },
+    "class_type": "LoadImagesFromDirectory",
+    "_meta": {
+      "title": "ControlNet 2"
+    }
+  },
+  "226": {
+    "inputs": {
+      "stop_at_clip_layer": -24,
+      "clip": [
+        "347",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "CLIP Set Last Layer"
+    }
+  },
+  "229": {
+    "inputs": {
+      "text": "ugly, deformed, bad lighting, blurry, text, clouds, watermark, extra hands, bad quality, deformed hands, deformed fingers, nostalgic, drawing, painting, bad anatomy, worst quality, blurry, blurred, normal quality, bad focus, tripod, three legs, weird legs, short legs, bag, handbag, 3 hands, 4 hands, three hands\n\n(embedding:BadDream:1) boy, man, male,\n(embedding:ng_deepnegative_v1_75t:1), \n(embedding:epiCNegative:1), \n(embedding:bad-picture-chill-75v:1), \n(embedding:AS-YoungV2-neg:1), \n(embedding:ERA09NEGV2:1) "
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "230": {
+    "inputs": {
+      "text": [
+        "229",
+        0
+      ],
+      "parser": "comfy",
+      "mean_normalization": true,
+      "multi_conditioning": false,
+      "use_old_emphasis_implementation": false,
+      "with_SDXL": false,
+      "ascore": 6,
+      "width": 1024,
+      "height": 1024,
+      "crop_w": 0,
+      "crop_h": 0,
+      "target_width": 1024,
+      "target_height": 1024,
+      "text_g": "",
+      "text_l": "",
+      "smZ_steps": 1,
+      "clip": [
+        "373",
+        1
+      ]
+    },
+    "class_type": "smZ CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode++"
+    }
+  },
+  "319": {
+    "inputs": {
+      "images": [
+        "368",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Output Image"
+    }
+  },
+  "334": {
+    "inputs": {
+      "output_path": [
+        "398",
+        0
+      ],
+      "filename_prefix": [
+        "354",
+        0
+      ],
+      "filename_delimiter": "_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 100,
+      "quality": 100,
+      "optimize_image": "false",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "true",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "344": {
+    "inputs": {
+      "text": [
+        "345",
+        0
+      ],
+      "parser": "comfy",
+      "mean_normalization": true,
+      "multi_conditioning": true,
+      "use_old_emphasis_implementation": false,
+      "with_SDXL": false,
+      "ascore": 6,
+      "width": 1024,
+      "height": 1024,
+      "crop_w": 0,
+      "crop_h": 0,
+      "target_width": 1024,
+      "target_height": 1024,
+      "text_g": "",
+      "text_l": "",
+      "smZ_steps": 1,
+      "clip": [
+        "373",
+        1
+      ]
+    },
+    "class_type": "smZ CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode++"
+    }
+  },
+  "345": {
+    "inputs": {
+      "text": "(masterpiece, top quality, best quality, official art, beautiful and aesthetic), Extreme detailed, Sexy ,1girl, brown hair, black dress, dancing"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "346": {
+    "inputs": {
+      "switch_1": "On",
+      "lora_name_1": "None",
+      "model_weight_1": 1,
+      "clip_weight_1": 1,
+      "switch_2": "On",
+      "lora_name_2": "None",
+      "model_weight_2": 0.75,
+      "clip_weight_2": 1,
+      "switch_3": "On",
+      "lora_name_3": "None",
+      "model_weight_3": 1,
+      "clip_weight_3": 1,
+      "lora_stack": [
+        "393",
+        0
+      ]
+    },
+    "class_type": "CR LoRA Stack",
+    "_meta": {
+      "title": "[Optional] CR LoRA Stack"
+    }
+  },
+  "347": {
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ],
+      "lora_stack": [
+        "346",
+        0
+      ]
+    },
+    "class_type": "CR Apply LoRA Stack",
+    "_meta": {
+      "title": "💊 CR Apply LoRA Stack"
+    }
+  },
+  "353": {
+    "inputs": {
+      "text": "Batch_",
+      "text_b": "",
+      "text_c": "",
+      "text_d": ""
+    },
+    "class_type": "Text String",
+    "_meta": {
+      "title": "Name"
+    }
+  },
+  "354": {
+    "inputs": {
+      "delimiter": "",
+      "clean_whitespace": "true",
+      "text_a": [
+        "353",
+        0
+      ],
+      "text_b": [
+        "361",
+        0
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "361": {
+    "inputs": {
+      "int_": [
+        "362",
+        0
+      ]
+    },
+    "class_type": "CR Integer To String",
+    "_meta": {
+      "title": "🔧 CR Integer To String"
+    }
+  },
+  "362": {
+    "inputs": {
+      "int": 1
+    },
+    "class_type": "Int Literal",
+    "_meta": {
+      "title": "Batch Number Naming"
+    }
+  },
+  "366": {
+    "inputs": {
+      "split_index": 5,
+      "images": [
+        "174",
+        0
+      ]
+    },
+    "class_type": "VHS_SplitImages",
+    "_meta": {
+      "title": "."
+    }
+  },
+  "367": {
+    "inputs": {
+      "split_index": 5,
+      "images": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "VHS_SplitImages",
+    "_meta": {
+      "title": "."
+    }
+  },
+  "368": {
+    "inputs": {
+      "split_index": 5,
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VHS_SplitImages",
+    "_meta": {
+      "title": "Preview Only 5 Images"
+    }
+  },
+  "369": {
+    "inputs": {
+      "sampling": "lcm",
+      "zsnr": false,
+      "model": [
+        "373",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingDiscrete",
+    "_meta": {
+      "title": "ModelSamplingDiscrete"
+    }
+  },
+  "373": {
+    "inputs": {
+      "lora_name": "pytorch_lora_weights.safetensors",
+      "strength_model": [
+        "391",
+        0
+      ],
+      "strength_clip": 0.1,
+      "model": [
+        "93",
+        0
+      ],
+      "clip": [
+        "226",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LCM LoRA"
+    }
+  },
+  "382": {
+    "inputs": {
+      "float": 4
+    },
+    "class_type": "Cfg Literal",
+    "_meta": {
+      "title": "Sampler CFG"
+    }
+  },
+  "383": {
+    "inputs": {
+      "int": 10
+    },
+    "class_type": "Int Literal",
+    "_meta": {
+      "title": "Total Sampler Steps"
+    }
+  },
+  "391": {
+    "inputs": {
+      "value": 0.65
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "LCM Lora Strength"
+    }
+  },
+  "393": {
+    "inputs": {
+      "switch_1": "On",
+      "lora_name_1": "None",
+      "model_weight_1": 1.5,
+      "clip_weight_1": 1,
+      "switch_2": "On",
+      "lora_name_2": "None",
+      "model_weight_2": 1,
+      "clip_weight_2": 1,
+      "switch_3": "On",
+      "lora_name_3": "None",
+      "model_weight_3": 1,
+      "clip_weight_3": 1
+    },
+    "class_type": "CR LoRA Stack",
+    "_meta": {
+      "title": "[Optional] CR LoRA Stack"
+    }
+  },
+  "398": {
+    "inputs": {
+      "string": "/home/yori/Downloads/output2"
+    },
+    "class_type": "String to Text",
+    "_meta": {
+      "title": "Output Folder Path"
+    }
+  },
+  "399": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": 87732434343,
+      "steps": [
+        "383",
+        0
+      ],
+      "cfg": [
+        "382",
+        0
+      ],
+      "sampler_name": "dpmpp_3m_sde_gpu",
+      "scheduler": "normal",
+      "start_at_step": 0,
+      "end_at_step": [
+        "421",
+        0
+      ],
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "427",
+        0
+      ],
+      "positive": [
+        "99",
+        0
+      ],
+      "negative": [
+        "99",
+        1
+      ],
+      "latent_image": [
+        "151",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "407": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": 87732434343,
+      "steps": [
+        "383",
+        0
+      ],
+      "cfg": [
+        "382",
+        0
+      ],
+      "sampler_name": "ddim",
+      "scheduler": "karras",
+      "start_at_step": [
+        "422",
+        0
+      ],
+      "end_at_step": 269,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "427",
+        0
+      ],
+      "positive": [
+        "99",
+        0
+      ],
+      "negative": [
+        "99",
+        1
+      ],
+      "latent_image": [
+        "410",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "408": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": [
+        "417",
+        0
+      ],
+      "samples": [
+        "399",
+        0
+      ]
+    },
+    "class_type": "LatentUpscaleBy",
+    "_meta": {
+      "title": "Upscale Latent By"
+    }
+  },
+  "410": {
+    "inputs": {
+      "strength": 1,
+      "latents": [
+        "408",
+        0
+      ]
+    },
+    "class_type": "BNK_InjectNoise",
+    "_meta": {
+      "title": "Inject Noise"
+    }
+  },
+  "415": {
+    "inputs": {
+      "motion_pe_stretch": [
+        "436",
+        0
+      ],
+      "min_motion_scale": 100,
+      "max_motion_scale": 100
+    },
+    "class_type": "ADE_AnimateDiffModelSettingsSimple",
+    "_meta": {
+      "title": "🚫[DEPR] Motion Model Settings (Simple) 🎭🅐🅓①"
+    }
+  },
+  "417": {
+    "inputs": {
+      "float": 1.2000000000000002
+    },
+    "class_type": "Cfg Literal",
+    "_meta": {
+      "title": "HIghRes Fix Upscale"
+    }
+  },
+  "421": {
+    "inputs": {
+      "int": 6
+    },
+    "class_type": "Int Literal",
+    "_meta": {
+      "title": "Stop Raw at nth Step"
+    }
+  },
+  "422": {
+    "inputs": {
+      "int": 5
+    },
+    "class_type": "Int Literal",
+    "_meta": {
+      "title": "Start Highres Fix from nth Step"
+    }
+  },
+  "427": {
+    "inputs": {
+      "tonemap_multiplier": [
+        "430",
+        0
+      ],
+      "rescale_multiplier": 1,
+      "model": [
+        "369",
+        0
+      ]
+    },
+    "class_type": "TonemapNoiseWithRescaleCFG",
+    "_meta": {
+      "title": "TonemapNoiseWithRescaleCFG"
+    }
+  },
+  "430": {
+    "inputs": {
+      "float": 3
+    },
+    "class_type": "Cfg Literal",
+    "_meta": {
+      "title": "Details Enhancer"
+    }
+  },
+  "436": {
+    "inputs": {
+      "int": 3
+    },
+    "class_type": "Int Literal",
+    "_meta": {
+      "title": "AD - Macro Motion"
+    }
+  },
+  "439": {
+    "inputs": {
+      "value": 0.8
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "CN 1 Strength"
+    }
+  },
+  "440": {
+    "inputs": {
+      "value": 0
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "CN 1 Start Percent"
+    }
+  },
+  "441": {
+    "inputs": {
+      "value": 0.8
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "CN 1 End Percent"
+    }
+  },
+  "443": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "CN 2 Strength"
+    }
+  },
+  "444": {
+    "inputs": {
+      "value": 0
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "CN 2 Start Percent"
+    }
+  },
+  "445": {
+    "inputs": {
+      "value": 0.9500000000000001
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "CN 2 End Percent"
+    }
+  }
+}
